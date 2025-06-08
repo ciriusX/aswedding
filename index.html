@@ -9,13 +9,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
+            /* Основные цвета */
             --color-primary: #8B0000;        /* бордовый */
             --color-secondary: #800020;      /* винный */
             --color-accent: #c19e65;         /* античное золото */
             --color-bg: #fffaf0;             /* цвет слоновой кости */
             --color-text: #2a0a0a;           /* темный бордовый для текста */
             --color-light: #d2b48c;          /* бежевый */
+
+            /* Новые оттенки */
+            --color-light-burgundy: #8c4345;  /* Светло-бордовый для акцентов */
+            --color-soft-gold: #d8c9a8;       /* Мягкое золото для фонов */
+            --color-ivory-dark: #f7f0e0;      /* Теплый вариант слоновой кости */
+
             --transition-speed: 0.5s;
+
+            /* Градиент фона */
+            background: linear-gradient(135deg, #3a0809 0%, #560c0e 100%);
         }
         * {
             margin: 0;
@@ -25,7 +35,6 @@
         }
         body {
             font-family: 'Cormorant Garamond', serif;
-            background: linear-gradient(135deg, #560c0e 0%, #3a0809 100%);
             color: var(--color-text);
             overflow-x: hidden;
             position: relative;
@@ -95,7 +104,11 @@
             transform: translateX(-50%);
             width: 100px;
             height: 2px;
-            background: var(--color-accent);
+            background: linear-gradient(to right,
+                transparent,
+                var(--color-soft-gold),  /* Новый градиент */
+                var(--color-light-burgundy),
+                transparent);
             border-radius: 2px;
         }
 
@@ -131,7 +144,7 @@
             width: 280px;
             height: 280px;
             margin: 40px auto;
-            border: 8px solid var(--color-accent);
+            border: 8px solid var(--color-soft-gold); /* Мягкое золото вместо яркого */
             border-radius: 50%;
             overflow: hidden;
             position: relative;
@@ -165,7 +178,7 @@
             min-width: 80px;
             transition: transform 0.4s ease;
             text-align: center;
-            border: 1px solid rgba(193, 158, 101, 0.3);
+            border: 1px solid var(--color-light-burgundy); /* Светло-бордовые границы */
         }
 
         .countdown-number {
@@ -243,7 +256,7 @@
             width: 100%;
             max-width: 600px;
             margin: 40px auto;
-            border: 6px solid var(--color-accent);
+            border: 6px solid var(--color-soft-gold); /* Мягкое золото вместо яркого */
             border-radius: 8px;
             overflow: hidden;
             position: relative;
@@ -337,7 +350,7 @@
             font-weight: 500;
             color: var(--color-text);
             padding-left: 10px;
-            border-left: 1px solid var(--color-accent);
+            border-left: 1px solid var(--color-soft-gold); /* Тонкий разделитель */
             padding-top: 5px;
             padding-bottom: 5px;
         }
@@ -346,8 +359,10 @@
             max-width: 700px;
             margin: 40px auto;
             padding: 30px;
-            background-color: var(--color-bg);
-            border: 1px solid var(--color-accent);
+            background: linear-gradient(to bottom,
+                var(--color-ivory-dark) 0%,
+                #fffaf0 100%);
+            border: 1px solid var(--color-light-burgundy); /* Светло-бордовые границы */
             border-radius: 10px;
             transition: transform 0.5s ease;
             position: relative;
@@ -375,11 +390,11 @@
         .rsvp-form textarea {
             width: 100%;
             padding: 12px;
-            border: 1px solid rgba(139, 0, 0, 0.2);
+            border: 1px solid var(--color-light-burgundy);
             border-radius: 6px;
             font-size: 1.1rem;
             font-family: 'Cormorant Garamond', serif;
-            background-color: rgba(255, 250, 240, 0.7);
+            background: rgba(255, 250, 240, 0.9); /* Чистый фон */
             transition: all 0.4s ease;
         }
 
@@ -487,6 +502,7 @@
             z-index: 1000;
             transition: all 0.5s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .theme-toggle:hover {
@@ -506,22 +522,26 @@
             align-items: center;
             justify-content: center;
             font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         /* ===== Ночная тема ===== */
         .night {
+            /* Утонченные ночные оттенки */
             --color-primary: #c19e65;        /* золотой */
             --color-secondary: #d2b48c;      /* светлое золото */
             --color-accent: #8B0000;          /* бордовый */
             --color-bg: #1a0606;             /* глубокий бархатный */
             --color-text: #e8d8c3;           /* теплый бежевый */
             --color-light: #321010;          /* темно-бордовый */
-            background: linear-gradient(135deg, #0d0303 0%, #1a0606 100%);
+            --color-light-burgundy: #5d2d2d; /* Темно-бордовый для ночи */
+
+            background: linear-gradient(135deg, #0a0202 0%, #1d0a0a 100%);
         }
 
         .night section {
-            background-color: rgba(26, 6, 6, 0.9);
-            border: 1px solid rgba(139, 0, 0, 0.3);
+            background-color: var(--color-starry-night, #1d0a0a);
+            border: 1px solid var(--color-moonlight-gold, #b8a47a); /* Тонкая золотая кайма */
         }
 
         .night section::before {
@@ -542,19 +562,22 @@
 
         .night .btn-map,
         .night .submit-btn {
-            background: linear-gradient(to right, #321010, #1a0606);
+            background: linear-gradient(to right, #2a0a0a, #1a0606);
+            border: 1px solid var(--color-moonlight-gold, #b8a47a); /* Золотая окантовка */
         }
 
         .night .rsvp-form {
-            background-color: rgba(26, 6, 6, 0.7);
+            background: linear-gradient(to bottom,
+                #1e0808 0%,
+                #2a0a0a 100%);
             border: 1px solid rgba(139, 0, 0, 0.4);
         }
 
         .night .rsvp-form input[type="text"],
         .night .rsvp-form select,
         .night .rsvp-form textarea {
-            background-color: rgba(26, 6, 6, 0.5);
-            border: 1px solid rgba(139, 0, 0, 0.4);
+            background-color: rgba(26, 6, 6, 0.7);
+            border: 1px solid var(--color-light-burgundy); /* Темно-бордовая граница */
             color: #e8d8c3;
         }
 
@@ -579,6 +602,18 @@
             color: #c19e65;
         }
 
+        .night h2::after {
+            background: linear-gradient(to right,
+                transparent,
+                var(--color-moonlight-gold, #b8a47a),
+                #8B0000,
+                transparent);
+        }
+
+        .night .timeline-event {
+            border-left: 1px solid var(--color-moonlight-gold, #b8a47a); /* Тонкий разделитель */
+        }
+
         /* Свадебные блестки */
         .glitter {
             position: fixed;
@@ -591,6 +626,10 @@
             opacity: 0.7;
             animation: glitterFall linear infinite;
         }
+
+        .gold-glitter { background-color: #c19e65; } /* Основное золото */
+        .rose-glitter { background-color: #8c4345; } /* Бордово-розовый */
+        .pearl-glitter { background-color: #f0e6d3; } /* Жемчужный */
 
         @keyframes glitterFall {
             to {
@@ -714,7 +753,7 @@
                 <span>2025</span>
             </div>
             <p style="text-align: center; font-size: 1.3rem; margin-bottom: 20px; font-style: italic;">
-                Дорогие гости,
+                Дорогие гости!
             </p>
             <p style="text-align: center; font-size: 1.2rem; max-width: 700px; margin: 0 auto 15px;">
                 Мы с радостью приглашаем вас на одно из самых волшебных событий нашей жизни.
@@ -872,9 +911,16 @@
             const glitterCount = 80;
             const container = document.body;
 
+            // Цвета для дневного и ночного режима
+            const dayColors = ['gold-glitter', 'rose-glitter'];
+            const nightColors = ['gold-glitter', 'pearl-glitter'];
+
+            // Определяем текущие цвета
+            const colors = body.classList.contains('night') ? nightColors : dayColors;
+
             for (let i = 0; i < glitterCount; i++) {
                 const glitter = document.createElement('div');
-                glitter.className = 'glitter';
+                glitter.className = `glitter ${colors[Math.floor(Math.random() * colors.length)]}`;
                 glitter.style.left = `${Math.random() * 100}vw`;
                 glitter.style.top = `${Math.random() * -100}px`;
                 glitter.style.opacity = `${Math.random() * 0.5 + 0.3}`;
@@ -882,10 +928,6 @@
                 glitter.style.height = glitter.style.width;
                 glitter.style.animationDuration = `${Math.random() * 10 + 15}s`;
                 glitter.style.animationDelay = `${Math.random() * 5}s`;
-
-                // Случайный цвет блесток (золото, серебро, белый)
-                const colors = ['#c19e65', '#e8d8c3', '#ffffff'];
-                glitter.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
 
                 container.appendChild(glitter);
             }
@@ -910,6 +952,10 @@
             } else {
                 localStorage.setItem('weddingTheme', 'day');
             }
+
+            // Обновляем блестки при смене темы
+            document.querySelectorAll('.glitter').forEach(el => el.remove());
+            createGlitter();
         });
 
         // Автоматическое переключение по времени
